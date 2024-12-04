@@ -3,11 +3,11 @@ services:
         container_name: sonarqube
         image: sonarqube
         depends_on:
-            - sonarqube-database
+            - mssql
         environment:
             - SONARQUBE_JDBC_USERNAME=sonarqube
             - SONARQUBE_JDBC_PASSWORD=sonarqube
-            - SONARQUBE_JDBC_URL=jdbc:sqlserver://sonarqube-database:1433;databaseName=sonarqube
+            - SONARQUBE_JDBC_URL=jdbc:sqlserver://mssql:1433;databaseName=sonarqube
         volumes:
             - sonarqube_conf:/opt/sonarqube/conf
             - sonarqube_data:/opt/sonarqube/data
@@ -16,8 +16,8 @@ services:
         ports:
             - 9000:9000
 
-    sonarqube-database:
-        container_name: sonarqube-database
+    mssql:
+        container_name: mssql
         image: mcr.microsoft.com/mssql/server
         environment:
             - ACCEPT_EULA=Y
