@@ -21,7 +21,7 @@ services:
         image: mcr.microsoft.com/mssql/server:2019-latest
         environment:
             - ACCEPT_EULA=Y
-            - SA_PASSWORD=ThisIsMyPassword123!
+            - MSSQL_SA_PASSWORD=ThisIsMyPassword123!
             - MSSQL_PID=Express
         volumes:
             - sonarqube_database_data:/var/opt/mssql/data
